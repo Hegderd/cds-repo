@@ -3,7 +3,7 @@
 ## Citizen Disbursement System (CDS)
 Develop a web application with one endpoint, eg, GET http://localhost:8080/users
 
-### Acceptance criteria
+#### Acceptance criteria
 1. Read a csv file, and insert into the database - You may include any data in the csv file
 2. Expose /users endpoint that returns users with valid salary (0 <= salary <= 4000)
 
@@ -12,13 +12,13 @@ Get the source code from GitHub using the following command.
 ```
 git clone https://github.com/Hegderd/cds-repo.git
 ```
-#### Run with maven command line
+#### 1. Run with maven command line
 Prerequisite: Java JDK 8 or above be installed and JAVA_HOME is set accordingly on the computer, to execute the following command.
 ```
 cd cds-repo/cds
 mvnw spring-boot:run
 ```
-#### Run with IDE
+#### 2. Run with IDE
 Source code can be imported to any Java IDE (with Maven plugin) and executed as Spring Boot application.
 
 ## System Design and Usage
