@@ -12,6 +12,7 @@ Get the source code from GitHub using the following command.
 ```
 git clone https://github.com/Hegderd/cds-repo.git
 ```
+Application can be run either on the command prompt or on Java IDE.
 #### 1. Run with maven command line
 Prerequisite: Java JDK 8 or above be installed and JAVA_HOME is set accordingly on the computer, to execute the following command.
 ```
