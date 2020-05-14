@@ -30,7 +30,7 @@ Alternatively, source code can be imported to any Java IDE and executed as Sprin
 Returns a list of all users : <br />
 GET http://localhost:8080/users
 
-With parameter of salary, for example, *salary=7680*, returns a list of users in the salary range *0 =< salary <= 7680* : <br />
+With parameter of salary, for example, *salary=7680*, it returns a list of users in the salary range *0 =< salary <= 7680* : <br />
 GET http://localhost:8080/users?salary=7680
 
 Returned users list is a JSON array in the following format :
