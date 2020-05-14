@@ -20,7 +20,7 @@ public class Util {
 
 	public static <T> List<T> parseCsv(final Class<T> clazz, final String filePath) throws IOException {
 		final CsvMapper mapper = new CsvMapper();
-		File file = new ClassPathResource(filePath).getFile();
+		final File file = new ClassPathResource(filePath).getFile();
 		CsvSchema schema = mapper.schemaFor(clazz).withHeader().withColumnReordering(true);
 		MappingIterator<T> readValues = mapper.readerFor(clazz).with(schema).readValues(file);
 		return readValues.readAll();
