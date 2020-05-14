@@ -12,7 +12,7 @@ Get the source code from GitHub using the following command.
 ```
 git clone https://github.com/Hegderd/cds-repo.git
 ```
-Prerequisite: Java 8 or above be installed on the computer to execute the following command.
+Prerequisite: Java JDK 8 or above be installed and JAVA_HOME is set accordingly on the computer, to execute the following command.
 
 ### Run with maven command line
 ```
