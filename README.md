@@ -75,12 +75,12 @@ Returned users list is a JSON array in the following format :
 ]
 ```
 
-4. When no records are found for a particular query, system returns an empty JSON array as follows
+4. When no records are found for a particular query, system returns an empty JSON array as follows :
 ```json
 []
 ```
 
-5. When errors are encountered, system returns a JSON error message as follows
+5. When errors are encountered, system returns a JSON error message as follows :
 
 ```json
 {
