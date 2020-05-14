@@ -15,7 +15,7 @@ import com.cognizant.cds.service.UserService;
 import com.cognizant.cds.util.Util;
 
 /**
- * Loads user data from CSV file to database on application startup.
+ * Loads user data from CSV file to database on application startup
  *
  * @author Raghavendra Hegde
  */
@@ -36,7 +36,7 @@ public class UserDataLoader implements ApplicationRunner {
 		logger.info("Started loading data...");
 
 		try {
-			List<User> userList = Util.read(User.class, filePath);
+			List<User> userList = Util.parseCsv(User.class, filePath);
 			userService.saveAllUsers(userList);
 
 			logger.info("Completed loading data...");

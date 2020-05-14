@@ -27,7 +27,7 @@ public class ExceptionResolver extends ResponseEntityExceptionHandler {
 	private static final String FAIL_FLAG = "FAILED";
 
 	/**
-	 * Handles InvalidInputException thrown when user enters an invalid type
+	 * Handles InvalidInputException thrown when user enters an invalid type of
 	 * parameter to query
 	 * 
 	 * @param ex
@@ -43,7 +43,7 @@ public class ExceptionResolver extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * Handles NoHandlerFoundException thrown when resource is not found
+	 * Handles NoHandlerFoundException thrown when requested resource is not found
 	 * 
 	 * @param ex
 	 * @param headers
@@ -60,8 +60,7 @@ public class ExceptionResolver extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * General Exception handler to handle all type of unhandled exceptions by other
-	 * handlers
+	 * General Exception handler to handle unhandled exceptions by other handlers
 	 * 
 	 * @param ex
 	 * @param request

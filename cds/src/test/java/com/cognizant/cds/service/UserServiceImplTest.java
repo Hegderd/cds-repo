@@ -22,6 +22,7 @@ import com.cognizant.cds.repository.UserRepository;
 
 @SpringBootTest
 public class UserServiceImplTest {
+	
 	@MockBean
 	private UserRepository userRepository;
 

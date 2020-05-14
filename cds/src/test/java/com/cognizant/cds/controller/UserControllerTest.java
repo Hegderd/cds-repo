@@ -66,7 +66,7 @@ public class UserControllerTest {
 	}
 
 	/**
-	 * Tests getUsers() method with valid parameter (numeric)
+	 * Tests getUsers() method with valid parameter (numeric value)
 	 */
 	@Test
 	public void testGetUsers_WithValidParam() throws Exception {
@@ -83,7 +83,7 @@ public class UserControllerTest {
 	}
 
 	/**
-	 * Tests getUsers() method with invalid parameter (non-numeric)
+	 * Tests getUsers() method with invalid parameter (non-numeric value)
 	 */
 	@Test
 	public void testGetUsers_WithInvalidParam() throws Exception {

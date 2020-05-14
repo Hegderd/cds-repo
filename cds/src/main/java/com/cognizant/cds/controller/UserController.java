@@ -19,7 +19,7 @@ import com.cognizant.cds.service.UserService;
 import com.cognizant.cds.validator.Validator;
 
 /**
- * REST API endpoints are exposed to users from this controller
+ * Controller class that exposes REST API endpoints
  * 
  * @author Raghavendra Hegde
  */
@@ -34,11 +34,11 @@ public class UserController {
 	private UserService userService;
 
 	/**
-	 * 1. Returns a list of all users (when no salary parameter is provided)
-	 * 2. Returns a list of users whose salary is 
-	 * between 0 and salary (when salary parameter is provided)
+	 * 1. Returns list of all users (without any request parameter)
+	 * 2. Returns list of users whose salary is 
+	 * between 0 <= salary <= xyz (with a request parameter of salary=xyz)
 	 * 
-	 * @param salary
+	 * @param salary (optional)
 	 * @return List<User>
 	 */
 	@GetMapping(value = "/users")
@@ -46,6 +46,7 @@ public class UserController {
 			final @RequestParam(required = false, name = "salary") String salary) {
 		
 		logger.debug("Started getUsers - " + salary);
+		
 		List<User> userList = null;
 		
 		if (salary == null) {

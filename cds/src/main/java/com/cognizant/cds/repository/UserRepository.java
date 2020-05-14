@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.cognizant.cds.model.User;
 
 /**
- * User repository which uses Spring Data JPA provided methods for database
+ * User repository that uses Spring Data JPA provided methods for database
  * operations
  * 
  * @author Raghavendra Hegde

@@ -18,7 +18,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 public class Util {
 
-	public static <T> List<T> read(final Class<T> clazz, final String filePath) throws IOException {
+	public static <T> List<T> parseCsv(final Class<T> clazz, final String filePath) throws IOException {
 		final CsvMapper mapper = new CsvMapper();
 		File file = new ClassPathResource(filePath).getFile();
 		CsvSchema schema = mapper.schemaFor(clazz).withHeader().withColumnReordering(true);
@@ -30,7 +30,7 @@ public class Util {
 		return (str == null || str.trim().length() == 0) ? true : false;
 	}
 
-	public static String trimString(final String str) {
+	public static String nullToEmpty(final String str) {
 		return (str == null) ? "" : str.trim();
 	}
 }
