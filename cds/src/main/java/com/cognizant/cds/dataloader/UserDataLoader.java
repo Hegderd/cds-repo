@@ -39,7 +39,7 @@ public class UserDataLoader implements ApplicationRunner {
 			List<User> userList = Util.parseCsv(User.class, filePath);
 			userService.saveAllUsers(userList);
 
-			logger.info("Completed loading data...");
+			logger.info("Completed loading data.");
 		} catch (Exception e) {
 			logger.error("Error encountered while loading data..." + e.getMessage());
 		}
