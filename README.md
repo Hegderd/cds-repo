@@ -12,15 +12,14 @@ Get the source code from GitHub using the following command.
 ```
 git clone https://github.com/Hegderd/cds-repo.git
 ```
+#### Run with maven command line
 Prerequisite: Java JDK 8 or above be installed and JAVA_HOME is set accordingly on the computer, to execute the following command.
-
-### Run with maven command line
 ```
 cd cds-repo/cds
 mvnw spring-boot:run
 ```
-
-Alternatively, source code can be imported to any Java IDE and executed as Spring Boot application.
+#### Run with IDE
+Source code can be imported to any Java IDE (with Maven plugin) and executed as Spring Boot application.
 
 ## System Design and Usage
 1. Application uses H2 in-memory database. No configuration is required to run the application.
