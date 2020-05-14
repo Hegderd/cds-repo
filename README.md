@@ -4,7 +4,7 @@
 Develop a web application with one endpoint, eg, GET http://localhost:8080/users
 
 ### Acceptance criteria
-1. Read a CSV data file, and insert into the database - You may include any data in the csv file
+1. Read a csv file, and insert into the database - You may include any data in the csv file
 2. Expose /users endpoint that returns users with valid salary (0 <= salary <= 4000)
 
 ## Running application locally
@@ -24,16 +24,16 @@ Alternatively, source code can be imported to any Java IDE and executed as Sprin
 
 ## System Design and Usage
 1. Application uses H2 in-memory database. No configuration is required to run the application.
-2. On starting the application, system loads users data CSV file located in the folder *src/main/resources/userDataFile.csv*
+2. On starting the application, system loads csv users data file located in the folder *src/main/resources/userDataFile.csv*
 3. Currently, system provides one API endpoint (with optional parameter of salary) to retrieve a list of users 
 
 Returns a list of all users : <br />
 GET http://localhost:8080/users
 
-With parameter of salary, for example, *salary=7680*, it returns a list of users in the salary range *0 =< salary <= 7680* : <br />
+With parameter of salary, for example, *salary=7680*, returns a list of users in the salary range *0 =< salary <= 7680* : <br />
 GET http://localhost:8080/users?salary=7680
 
-Users list returned is a JSON array object in the following format :
+Returned users list is a JSON array in the following format :
 
 ```json
 [
