@@ -14,7 +14,7 @@ git clone https://github.com/Hegderd/cds-repo.git
 ```
 Application can be either run on the command prompt or on Java IDE.
 #### 1. Run with maven command line
-Prerequisite: Java JDK 8 or above be installed and JAVA_HOME is set accordingly on the computer, to execute the following command.
+**Prerequisite :** Java JDK 8 or above is installed and JAVA_HOME is set accordingly on the computer, to execute the following command.
 ```
 cd cds-repo/cds
 mvnw spring-boot:run
