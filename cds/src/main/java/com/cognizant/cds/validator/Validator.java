@@ -27,6 +27,6 @@ public class Validator {
 	}
 
 	public String getErrorMessage() {
-		return Util.nullToEmpty(errorMessage);
+		return errorMessage;
 	}
 }

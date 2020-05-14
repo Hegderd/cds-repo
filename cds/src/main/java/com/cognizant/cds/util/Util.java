@@ -25,12 +25,4 @@ public class Util {
 		MappingIterator<T> readValues = mapper.readerFor(clazz).with(schema).readValues(file);
 		return readValues.readAll();
 	}
-
-	public static boolean isEmptry(final String str) {
-		return (str == null || str.trim().length() == 0) ? true : false;
-	}
-
-	public static String nullToEmpty(final String str) {
-		return (str == null) ? "" : str.trim();
-	}
 }
