@@ -22,7 +22,7 @@ mvnw spring-boot:run
 ### 2. Run with IDE
 Source code can be imported to any Java IDE (with Maven plugin) and executed as Spring Boot application.
 
-## System Design and Usage
+## System Design and APIs
 1. Application uses H2 in-memory database. No configuration is required to run the application.
 2. On starting the application, system loads csv users data file located in the folder *src/main/resources/userDataFile.csv*
 3. Currently, system provides one API endpoint (with optional parameter of salary) to retrieve a list of users 
