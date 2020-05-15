@@ -27,10 +27,10 @@ Source code can be imported to any Java IDE (with Maven plugin) and executed as 
 2. On starting the application, system loads csv users data file located in the folder *src/main/resources/userDataFile.csv*
 3. Currently, system provides one API endpoint (with optional parameter of salary) to retrieve a list of users 
 
-Returns a list of all users : <br />
+Returns list of all users : <br />
 GET http://localhost:8080/users
 
-With parameter of salary, for example, *salary=7680*, it returns a list of users in the salary range *0 <= salary <= 7680* : <br />
+With salary parameter, for example, *salary=7680*, returns list of users in the salary range *0 <= salary <= 7680* : <br />
 GET http://localhost:8080/users?salary=7680
 
 Returned users list is a JSON array in the following format :
