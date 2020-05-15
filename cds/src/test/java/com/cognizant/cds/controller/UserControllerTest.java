@@ -1,27 +1,23 @@
 package com.cognizant.cds.controller;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
 
-import com.cognizant.cds.exception.InvalidInputException;
 import com.cognizant.cds.model.User;
 import com.cognizant.cds.service.UserService;
 
@@ -31,63 +27,66 @@ import com.cognizant.cds.service.UserService;
  * @author Raghavendra Hegde
  */
 
-@ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
+@WebMvcTest
 public class UserControllerTest {
+	
+	private List<User> userList = null;
 
-	@InjectMocks
-	private UserController userController;
+	@Autowired
+	private MockMvc mockMvc;
 
-	@Mock
-	private UserService userService;
-
-	@BeforeClass
+	@MockBean
+	UserService userService;
+	
+	@BeforeEach
 	public void setContext() {
-		MockHttpServletRequest request = new MockHttpServletRequest();
-		RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
+		userList = Arrays.asList(
+				new User("1234", "Name1", 2000, "name1@test.com"),
+				new User("2345", "Name2", 3000, "name2@test.com"), 
+				new User("3456", "Name3", 6000, "name2@test.com"));
 	}
 
 	/**
-	 * Tests getUsers() with no parameter
+	 * Tests /users endpoint with no parameter
 	 */
 	@Test
 	public void testGetUsers() throws Exception {
-		List<User> userList = Arrays.asList(
-				new User("1234", "Name1", 2000, "name1@test.com"),
-				new User("2345", "Name2", 3000, "name2@test.com"),
-				new User("3456", "Name3", 6000, "name2@test.com"));
 
 		Mockito.when(userService.getAllUsers()).thenReturn(userList);
 
-		ResponseEntity<List<User>> responseEntity = userController.getUsers(null);
-
-		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(responseEntity.getBody().size()).isEqualTo(3);
+		this.mockMvc.perform(get("/users"))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.size()", is(3)))
+				.andExpect(jsonPath("$[1].email", is("name2@test.com")))
+				.andExpect(jsonPath("$[1].salary", is(3000.0)));
 	}
 
 	/**
-	 * Tests getUsers() with valid (numeric value) salary parameter 
+	 * Tests /users endpoint with valid (numeric value) salary parameter
 	 */
 	@Test
 	public void testGetUsers_WithValidParam() throws Exception {
-		List<User> userList = Arrays.asList(
-				new User("1234", "Name1", 2000, "name1@test.com"),
-				new User("2345", "Name2", 3000, "name2@test.com"));
 
 		Mockito.when(userService.getUsersBySalary(4000)).thenReturn(userList);
 
-		ResponseEntity<List<User>> responseEntity = userController.getUsers("4000");
-
-		assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		assertThat(responseEntity.getBody().size()).isEqualTo(2);
+		this.mockMvc.perform(get("/users?salary=4000"))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.size()", is(3)))
+				.andExpect(jsonPath("$[2].name", is("Name3")))
+				.andExpect(jsonPath("$[2].salary", is(6000.0)));
 	}
-
+	
 	/**
-	 * Tests getUsers() method with invalid (non-numeric value) salary parameter 
+	 * Tests /users endpoint with invalid (non-numeric value) salary parameter 
 	 */
 	@Test
 	public void testGetUsers_WithInvalidParam() throws Exception {
-		Assertions.assertThrows(InvalidInputException.class, () -> userController.getUsers("abc"));
+
+		Mockito.when(userService.getUsersBySalary(4000)).thenReturn(userList);
+
+		this.mockMvc.perform(get("/users?salary=abc"))
+				.andExpect(status().isBadRequest());
 	}
 
 }
