@@ -30,7 +30,7 @@ Source code can be imported to any Java IDE (with Maven plugin) and executed as 
 Returns list of all users : <br />
 GET http://localhost:8080/users
 
-With salary parameter, for example, *salary=7680*, returns list of users in the salary range *0 <= salary <= 7680* : <br />
+With a salary parameter, for example, *salary=7680*, returns list of users in the salary range *0 <= salary <= 7680* : <br />
 GET http://localhost:8080/users?salary=7680
 
 Returned users list is a JSON array in the following format :
