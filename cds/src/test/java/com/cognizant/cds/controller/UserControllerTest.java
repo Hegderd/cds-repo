@@ -63,6 +63,18 @@ public class UserControllerTest {
 	}
 
 	/**
+	 * Tests for invalid API endpoint
+	 */
+	@Test
+	public void testGetUsers_InvalidResource() throws Exception {
+
+		Mockito.when(userService.getAllUsers()).thenReturn(userList);
+
+		this.mockMvc.perform(get("/alluser"))
+				.andExpect(status().isNotFound());
+	}
+
+	/**
 	 * Tests /users endpoint with valid (numeric value) salary parameter
 	 */
 	@Test
